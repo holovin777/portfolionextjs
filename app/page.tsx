@@ -1,9 +1,11 @@
-import ProjectsSection from "@/components/ProjectsSection"
+import CtaSection from "@/components/CtaSection"
 import ExperienceSection from "@/components/ExperienceSection"
 import HeroSection from "@/components/HeroSection"
+import ProjectsSection from "@/components/ProjectsSection"
 import QualificationsSection from "@/components/QualificationsSection"
 import QuickInfoCard from "@/components/QuickInfoCard"
 import SocialLinksSection from "@/components/SocialLinksSection"
+import StatsSection from "@/components/StatsSection"
 import { getCustomer } from "@/lib/api"
 
 export default async function Home() {
@@ -28,38 +30,23 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
-          <HeroSection customer={customer} />
-          <QuickInfoCard customer={customer} />
-        </div>
+        <HeroSection customer={customer} />
       </div>
 
+      <StatsSection
+        experienceCount={customer.workingExperiences.length}
+        qualificationCount={customer.qualifications.length}
+        socialCount={customer.socials.length}
+      />
+
       <section className="mx-auto max-w-6xl px-6 py-8">
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
-            <p className="text-sm text-zinc-400">Work Experience</p>
-            <p className="mt-2 text-3xl font-bold">
-              {customer.workingExperiences.length}
-            </p>
-          </div>
-
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
-            <p className="text-sm text-zinc-400">Qualifications</p>
-            <p className="mt-2 text-3xl font-bold">
-              {customer.qualifications.length}
-            </p>
-          </div>
-
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
-            <p className="text-sm text-zinc-400">Social Profiles</p>
-            <p className="mt-2 text-3xl font-bold">{customer.socials.length}</p>
-          </div>
-        </div>
+        <QuickInfoCard customer={customer} />
       </section>
 
       <ExperienceSection jobs={latestJobs} />
       <QualificationsSection qualifications={latestQualifications} />
       <ProjectsSection />
+      <CtaSection email={customer.email} blog={customer.blog} />
       <SocialLinksSection socials={customer.socials} />
     </main>
   )
