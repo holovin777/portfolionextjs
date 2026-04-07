@@ -49,7 +49,7 @@ export default function ProjectsSection() {
               href={project.href}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-block text-sm font-medium text-zinc-100 underline underline-offset-4"
+              className="mt-6 inline-block text-sm font-medium text-zinc-100 underline underline-offset-4 transition hover:text-green-400"
             >
               Open project
             </a>

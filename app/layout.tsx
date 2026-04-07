@@ -12,41 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.holovin.com"),
   title: {
-    default: "Viktor Holovin | Portfolio",
-    template: "%s | Viktor Holovin",
+    default: "Portfolio",
+    template: "%s | Portfolio",
   },
-  description:
-    "Frontend portfolio built with Next.js and Tailwind CSS, powered by PortfolioSpring API.",
+  description: "Modern portfolio built with Next.js and powered by a custom API.",
   applicationName: "PortfolioNextJS",
-  keywords: [
-    "Viktor Holovin",
-    "Next.js",
-    "Tailwind CSS",
-    "Java",
-    "Spring Boot",
-    "Portfolio",
-    "DevOps",
-    "Frontend",
-    "Backend",
-  ],
-  authors: [{ name: "Viktor Holovin", url: "https://www.holovin.com" }],
-  creator: "Viktor Holovin",
-  publisher: "Viktor Holovin",
-  openGraph: {
-    title: "Viktor Holovin | Portfolio",
-    description:
-      "Frontend portfolio built with Next.js and Tailwind CSS, powered by PortfolioSpring API.",
-    url: "https://www.holovin.com",
-    siteName: "Viktor Holovin Portfolio",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Viktor Holovin | Portfolio",
-    description:
-      "Frontend portfolio built with Next.js and Tailwind CSS, powered by PortfolioSpring API.",
-  },
   robots: {
     index: true,
     follow: true,
