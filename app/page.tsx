@@ -1,3 +1,4 @@
+import ProjectsSection from "@/components/ProjectsSection"
 import ExperienceSection from "@/components/ExperienceSection"
 import HeroSection from "@/components/HeroSection"
 import QualificationsSection from "@/components/QualificationsSection"
@@ -58,6 +59,7 @@ export default async function Home() {
 
       <ExperienceSection jobs={latestJobs} />
       <QualificationsSection qualifications={latestQualifications} />
+      <ProjectsSection />
       <SocialLinksSection socials={customer.socials} />
     </main>
   )
