@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection"
 import ProjectsSection from "@/components/ProjectsSection"
 import QualificationsSection from "@/components/QualificationsSection"
 import QuickInfoCard from "@/components/QuickInfoCard"
+import ServicesSection from "@/components/ServicesSection"
 import SocialLinksSection from "@/components/SocialLinksSection"
 import StatsSection from "@/components/StatsSection"
 import { getCustomer } from "@/lib/api"
@@ -46,6 +47,7 @@ export default async function Home() {
       <ExperienceSection jobs={latestJobs} />
       <QualificationsSection qualifications={latestQualifications} />
       <ProjectsSection />
+      <ServicesSection innomartsUrl={customer.blog} />
       <CtaSection email={customer.email} blog={customer.blog} />
       <SocialLinksSection socials={customer.socials} />
     </main>
