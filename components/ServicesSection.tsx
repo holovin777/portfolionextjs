@@ -36,7 +36,7 @@ export default function ServicesSection({
             <ul className="mt-5 space-y-3 text-sm text-zinc-400">
               {service.points.map((point) => (
                 <li key={point} className="flex gap-3">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-zinc-500" />
+                  <span className="mt-1 h-2 w-2 rounded-full bg-green-400" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -57,7 +57,7 @@ export default function ServicesSection({
           href={innomartsUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-5 inline-block rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:opacity-90"
+          className="mt-5 inline-block rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-green-400"
         >
           Visit InnoMarts Services
         </a>

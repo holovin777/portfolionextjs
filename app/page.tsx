@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import CtaSection from "@/components/CtaSection"
 import ExperienceSection from "@/components/ExperienceSection"
 import HeroSection from "@/components/HeroSection"
@@ -8,6 +9,37 @@ import ServicesSection from "@/components/ServicesSection"
 import SocialLinksSection from "@/components/SocialLinksSection"
 import StatsSection from "@/components/StatsSection"
 import { getCustomer } from "@/lib/api"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const customer = await getCustomer()
+
+  const fullName = `${customer.firstName} ${customer.lastName}`
+  const description =
+    customer.description.length > 160
+      ? `${customer.description.slice(0, 157)}...`
+      : customer.description
+
+  return {
+    title: `${fullName} | Portfolio`,
+    description,
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      title: `${fullName} | Portfolio`,
+      description,
+      url: "/",
+      siteName: "PortfolioNextJS",
+      type: "website",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${fullName} | Portfolio`,
+      description,
+    },
+  }
+}
 
 export default async function Home() {
   const customer = await getCustomer()

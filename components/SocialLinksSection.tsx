@@ -23,7 +23,7 @@ export default function SocialLinksSection({
             href={social.link}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium transition hover:bg-zinc-800"
+            className="rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition hover:border-green-500/40 hover:bg-zinc-800 hover:text-green-400"
           >
             {social.title}
           </a>

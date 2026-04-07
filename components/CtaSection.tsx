@@ -23,7 +23,7 @@ export default function CtaSection({ email, blog }: CtaSectionProps) {
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href={`mailto:${email}`}
-            className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:opacity-90"
+            className="rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-green-400"
           >
             Contact Me
           </a>
@@ -32,7 +32,7 @@ export default function CtaSection({ email, blog }: CtaSectionProps) {
             href={blog}
             target="_blank"
             rel="noreferrer"
-            className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold transition hover:bg-zinc-900"
+            className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:border-green-500/40 hover:bg-zinc-900"
           >
             Visit InnoMarts
           </a>

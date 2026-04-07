@@ -7,9 +7,9 @@ type HeroSectionProps = {
 export default function HeroSection({ customer }: HeroSectionProps) {
   return (
     <section className="py-16 sm:py-24">
-      <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
         <div>
-          <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-xs uppercase tracking-[0.2em] text-zinc-400">
+          <div className="inline-flex items-center rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-xs uppercase tracking-[0.2em] text-green-400">
             PortfolioNextJS / PortfolioSpring
           </div>
 
@@ -30,7 +30,7 @@ export default function HeroSection({ customer }: HeroSectionProps) {
               href={customer.website}
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:opacity-90"
+              className="rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-green-400"
             >
               Visit Website
             </a>
@@ -39,7 +39,7 @@ export default function HeroSection({ customer }: HeroSectionProps) {
               href={customer.blog}
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold transition hover:bg-zinc-900"
+              className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:border-green-500/40 hover:bg-zinc-900"
             >
               Visit InnoMarts
             </a>
@@ -47,14 +47,27 @@ export default function HeroSection({ customer }: HeroSectionProps) {
         </div>
 
         <div className="relative">
-          <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-zinc-800/20 to-zinc-600/5 blur-2xl" />
+          <div className="absolute inset-0 rounded-[2rem] bg-green-500/5 blur-2xl" />
 
           <div className="relative rounded-[2rem] border border-zinc-800 bg-zinc-900 p-8 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-            <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
-              Current Focus
-            </p>
+            <div className="mb-6 flex items-center gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-green-500/20 bg-green-500/10">
+                <span className="font-mono text-2xl font-bold text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.65)]">
+                  {"{h}"}
+                </span>
+              </div>
 
-            <div className="mt-6 space-y-5">
+              <div>
+                <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+                  Identity
+                </p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Holovin / Builder Mindset
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-5">
               <div>
                 <p className="text-sm text-zinc-500">Role</p>
                 <p className="mt-1 font-medium text-zinc-100">
