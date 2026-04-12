@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Customer } from "@/types/customer"
 
 type HeroSectionProps = {
@@ -50,19 +51,44 @@ export default function HeroSection({ customer }: HeroSectionProps) {
           <div className="absolute inset-0 rounded-[2rem] bg-green-500/5 blur-2xl" />
 
           <div className="relative rounded-[2rem] border border-zinc-800 bg-zinc-900 p-8 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-            <div className="mb-6 flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-green-500/20 bg-green-500/10">
-                <span className="font-mono text-2xl font-bold text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.65)]">
-                  {"{h}"}
-                </span>
+            <div className="mb-8 flex items-center gap-5">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-[1.6rem] bg-green-500/20 blur-xl" />
+
+                <div className="relative h-24 w-24 overflow-hidden rounded-[1.6rem] border border-green-500/30 bg-zinc-950 shadow-[0_0_30px_rgba(34,197,94,0.18)]">
+                  {customer.photoUrl ? (
+                    <Image
+                      src={customer.photoUrl}
+                      alt={`${customer.firstName} ${customer.lastName}`}
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                      priority
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <span className="font-mono text-3xl font-bold text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.65)]">
+                        {"{h}"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="absolute -bottom-2 -right-2 rounded-full border border-zinc-800 bg-zinc-950 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.18)]">
+                  Live
+                </div>
               </div>
 
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
                   Identity
                 </p>
-                <p className="mt-1 font-semibold text-zinc-100">
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
                   Holovin / Builder Mindset
+                </p>
+                <p className="mt-2 max-w-xs text-sm leading-6 text-zinc-400">
+                  Practical systems, modern web tools, and a strong hands-on
+                  technical background.
                 </p>
               </div>
             </div>
