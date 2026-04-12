@@ -54,7 +54,7 @@ export default function ServicesSection({
         </p>
 
         <a
-          href={innomartsUrl}
+          href={innomartsUrl + "/services"}
           target="_blank"
           rel="noreferrer"
           className="mt-5 inline-block rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-green-400"
