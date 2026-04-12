@@ -80,4 +80,5 @@ export type Customer = {
   desiredProfession: string | null
   description: string
   descriptionIt: string | null
+  photoUrl: string | null
 }
