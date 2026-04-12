@@ -1,4 +1,4 @@
-import { projects } from "@/lib/projects"
+import { projects } from "@/lib/projects";
 
 export default function ProjectsSection() {
   return (
@@ -20,11 +20,13 @@ export default function ProjectsSection() {
             key={project.title}
             className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6"
           >
-            <div className="flex items-start justify-between gap-4">
-              <h3 className="text-xl font-semibold">{project.title}</h3>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <h3 className="max-w-full break-words text-xl font-semibold text-zinc-100">
+                {project.title}
+              </h3>
 
               {project.status ? (
-                <span className="rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-400">
+                <span className="w-fit rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-400">
                   {project.status}
                 </span>
               ) : null}
@@ -57,5 +59,5 @@ export default function ProjectsSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }
