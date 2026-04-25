@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "scontent.fbri6-1.fna.fbcdn.net",
+        hostname: "scontent.fflr2-1.fna.fbcdn.net",
       },
     ],
   },

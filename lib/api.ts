@@ -1,11 +1,11 @@
 import { Customer } from "@/types/customer"
 
 export async function getCustomer(): Promise<Customer> {
-  const apiBaseUrl = process.env.API_BASE_URL
+  const apiBaseUrl = process.env.SPRING_API_URL
   const customerId = process.env.CUSTOMER_ID
 
   if (!apiBaseUrl || !customerId) {
-    throw new Error("Missing API_BASE_URL or CUSTOMER_ID in environment variables")
+    throw new Error("Missing SPRING_API_URL or CUSTOMER_ID in environment variables")
   }
 
   const res = await fetch(`${apiBaseUrl}/api/v1/customer/${customerId}`, {
