@@ -53,7 +53,7 @@ Create a file called:
 and add:
 
 ```env
-API_BASE_URL=https://api.holovin.com
+SPRING_API_URL=https://localhost:8001
 CUSTOMER_ID=your_customer_id_here
 ```
 
@@ -66,7 +66,7 @@ CUSTOMER_ID=your_customer_id_here
 ## 📄 .env.example
 
 ```env
-API_BASE_URL=
+SPRING_API_URL=
 CUSTOMER_ID=
 ```
 
