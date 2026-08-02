@@ -12,10 +12,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "holovin.com",
       },
-      {
-        protocol: "https",
-        hostname: "scontent.fflr2-1.fna.fbcdn.net",
-      },
     ],
   },
 }
