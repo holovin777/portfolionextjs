@@ -6,33 +6,35 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    title: "Fast Websites",
+    title: "Modern Websites",
     description:
-      "Modern websites built with performance, simplicity, and clarity in mind.",
+      "Fast, responsive, and maintainable websites built for businesses, professionals, and real-world projects.",
     points: [
-      "Landing pages and portfolio sites",
-      "Fast frontend with clean structure",
-      "Responsive layout for mobile and desktop",
+      "Business websites, landing pages, and portfolios",
+      "Responsive design for mobile and desktop",
+      "Performance, SEO, and clean structure",
     ],
   },
+
   {
-    title: "Frontend + Backend Integration",
+    title: "Full-Stack Web Applications",
     description:
-      "Connecting interfaces with real backend logic instead of fake static demos.",
+      "Web applications that connect a modern frontend with real backend logic, APIs, and persistent data.",
     points: [
-      "REST API integration",
-      "Next.js frontend with dynamic data",
-      "Structured fullstack architecture",
+      "Next.js and TypeScript frontend",
+      "Java Spring Boot backend",
+      "PostgreSQL and REST API integration",
     ],
   },
+
   {
-    title: "Technical Problem-Solving",
+    title: "Backend & Integrations",
     description:
-      "Practical thinking shaped by real maintenance work, backend development, and system troubleshooting.",
+      "Backend services and integrations designed to connect data, external systems, and frontend applications reliably.",
     points: [
-      "Clear technical reasoning",
-      "Useful solutions over unnecessary complexity",
-      "Focus on shipping working results",
+      "REST API development and integration",
+      "Database-backed application logic",
+      "Existing system improvements and troubleshooting",
     ],
   },
 ]
