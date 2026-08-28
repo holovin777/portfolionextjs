@@ -10,33 +10,59 @@ export const projects: Project[] = [
   {
     title: "holovin.com",
     description:
-      "My personal portfolio website, built to present my work, experience, and technical journey in a modern frontend.",
+      "My full-stack personal portfolio built with Next.js and TypeScript, connected to a Java Spring Boot REST API and PostgreSQL database. It brings together my professional experience, education, projects, and technical background in one dynamic application.",
     href: "https://holovin.com",
-    tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-    status: "Active",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+    ],
+    status: "Production",
   },
+
   {
-    title: "PortfolioSpring",
+    title: "La Magia dei Colori",
     description:
-      "Java Spring Boot backend that powers my portfolio data through a structured REST API.",
-    href: "https://api.holovin.com/api/v1/customer/eeb4914e-a3cc-4bc5-a342-8b8d22cba043",
-    tech: ["Java", "Spring Boot", "REST API", "PostgreSQL"],
-    status: "Core Backend",
+      "A production website built with Next.js for a children's creative workshop project, designed to present activities, educational content, a gallery, and contact information in a clear and responsive experience.",
+    href: "https://lamagiadeicolori.com",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Responsive Design",
+      "SEO",
+      "Cloudflare",
+    ],
+    status: "Production",
   },
+
   {
-    title: "innomarts.com",
+    title: "InnoMarts",
     description:
-      "My blog and services website where I publish tech content and offer fast website development.",
+      "A Next.js website focused on modern website development and digital services, built to present practical solutions for businesses and clients who need fast, maintainable, and professional websites.",
     href: "https://innomarts.com",
-    tech: ["Hugo", "HTML", "CSS", "Content"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "SEO",
+      "Cloudflare",
+    ],
     status: "Active",
   },
+
   {
-    title: "italianocongeoff.vercel.app",
+    title: "Italiano con Geoff",
     description:
-      "A language-focused project built around real communication, practice, and content sharing.",
+      "An experimental language-learning project focused on practical Italian communication, structured educational content, and a simple web experience for learners.",
     href: "https://italianocongeoff.vercel.app",
-    tech: ["Frontend", "Vercel", "Web"],
+    tech: [
+      "Frontend",
+      "Responsive UI",
+      "Vercel",
+    ],
     status: "Experimental",
   },
 ]
