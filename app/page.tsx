@@ -52,14 +52,6 @@ export default async function Home() {
     })
     .slice(0, 4)
 
-  const latestQualifications = [...customer.qualifications]
-    .sort((a, b) => {
-      const aDate = a.finishedStudying ?? a.startedStudying ?? "1900-01-01"
-      const bDate = b.finishedStudying ?? b.startedStudying ?? "1900-01-01"
-      return new Date(bDate).getTime() - new Date(aDate).getTime()
-    })
-    .slice(0, 4)
-
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
@@ -77,7 +69,7 @@ export default async function Home() {
       </section>
 
       <ExperienceSection jobs={latestJobs} />
-      <QualificationsSection qualifications={latestQualifications} />
+      <QualificationsSection qualifications={customer.qualifications} />
       <ProjectsSection />
       <ServicesSection innomartsUrl={customer.blog} />
       <CtaSection email={customer.email} blog={customer.blog} />
