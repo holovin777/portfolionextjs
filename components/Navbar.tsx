@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
+import Link from "next/link";
+import { useState } from "react";
 
 const navItems = [
   { href: "/experience", label: "Experience" },
-  { href: "/#qualifications", label: "Qualifications" },
+  { href: "/education", label: "Education" },
   { href: "/#projects", label: "Projects" },
   { href: "/#services", label: "Services" },
   { href: "/#socials", label: "Contact" },
-]
+];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur">
@@ -74,5 +74,5 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }
