@@ -1,23 +1,34 @@
-import Image from "next/image"
-import { Customer } from "@/types/customer"
+import Image from "next/image";
+import { Customer } from "@/types/customer";
 
 type HeroSectionProps = {
-  customer: Customer
-}
+  customer: Customer;
+};
 
 export default function HeroSection({ customer }: HeroSectionProps) {
   const currentExperience = [...(customer.workingExperiences ?? [])]
     .filter((experience) => !experience.finishedWork)
     .sort(
       (a, b) =>
-        new Date(b.startedWork).getTime() -
-        new Date(a.startedWork).getTime(),
-    )[0]
+        new Date(b.startedWork).getTime() - new Date(a.startedWork).getTime(),
+    )[0];
 
   const currentRole =
-    currentExperience?.positionAtWork?.name ?? "Technical Professional"
+    currentExperience?.positionAtWork?.name ?? "Technical Professional";
 
-  const currentCompany = currentExperience?.company
+  const currentCompany = currentExperience?.company;
+
+  const careerFocus =
+    customer.desiredProfession || "Continuous Improvement Engineer";
+
+  const focusAreas = [
+    "Process Improvement",
+    "Industrial Engineering",
+    "Digitalization",
+    "Java",
+    "PostgreSQL",
+    "Linux",
+  ];
 
   return (
     <section className="py-16 sm:py-24 lg:py-28">
@@ -25,7 +36,7 @@ export default function HeroSection({ customer }: HeroSectionProps) {
         {/* LEFT SIDE */}
         <div>
           <div className="inline-flex items-center rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-green-400">
-            Full-Stack Development
+            Process Improvement · Digitalization
           </div>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-100 sm:text-6xl lg:text-7xl">
@@ -33,46 +44,46 @@ export default function HeroSection({ customer }: HeroSectionProps) {
           </h1>
 
           <h2 className="mt-5 max-w-3xl text-xl font-semibold leading-8 text-zinc-300 sm:text-2xl">
-            Full-Stack Developer with an Engineering Mindset.
+            Industrial Engineer focused on Process Improvement & Digitalization.
           </h2>
 
           <p className="mt-6 max-w-3xl leading-8 text-zinc-400">
             {customer.description}
           </p>
 
+          {/* CTA */}
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#projects"
+              href="#experience"
               className="rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition duration-200 hover:bg-green-400"
+            >
+              View Experience
+            </a>
+
+            <a
+              href="#projects"
+              className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-100 transition duration-200 hover:border-green-500/40 hover:bg-zinc-900"
             >
               View Projects
             </a>
-
-            <a
-              href="#socials"
-              className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-100 transition duration-200 hover:border-green-500/40 hover:bg-zinc-900"
-            >
-              Contact Me
-            </a>
           </div>
 
-          {/* SMALL TECH SUMMARY */}
-          <div className="mt-10 flex flex-wrap gap-2">
-            {[
-              "Java",
-              "Spring Boot",
-              "Next.js",
-              "TypeScript",
-              "PostgreSQL",
-              "Linux",
-            ].map((technology) => (
-              <span
-                key={technology}
-                className="rounded-full border border-zinc-800 bg-zinc-900/70 px-3 py-1.5 text-xs font-medium text-zinc-400"
-              >
-                {technology}
-              </span>
-            ))}
+          {/* FOCUS / TOOLKIT */}
+          <div className="mt-10">
+            <p className="mb-3 text-xs uppercase tracking-[0.18em] text-zinc-600">
+              Engineering & Digital Toolkit
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {focusAreas.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-zinc-800 bg-zinc-900/70 px-3 py-1.5 text-xs font-medium text-zinc-400"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -112,7 +123,7 @@ export default function HeroSection({ customer }: HeroSectionProps) {
 
               <div>
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">
-                  Engineering + Software
+                  Engineering + Digitalization
                 </p>
 
                 <p className="mt-2 text-lg font-semibold text-zinc-100">
@@ -120,16 +131,16 @@ export default function HeroSection({ customer }: HeroSectionProps) {
                 </p>
 
                 <p className="mt-2 max-w-xs text-sm leading-6 text-zinc-400">
-                  Practical engineering experience combined with modern
-                  software development.
+                  Hands-on industrial experience combined with engineering,
+                  software, data, and practical problem-solving.
                 </p>
               </div>
             </div>
 
             <div className="border-t border-zinc-800" />
 
-            {/* CURRENT ROLE */}
             <div className="mt-7 space-y-6">
+              {/* CURRENT ROLE */}
               <div>
                 <p className="text-sm text-zinc-500">Current role</p>
 
@@ -155,14 +166,23 @@ export default function HeroSection({ customer }: HeroSectionProps) {
                 ) : null}
               </div>
 
+              {/* CAREER DIRECTION */}
               <div>
-                <p className="text-sm text-zinc-500">Development</p>
+                <p className="text-sm text-zinc-500">Career focus</p>
+
+                <p className="mt-1 font-medium text-zinc-100">{careerFocus}</p>
+              </div>
+
+              {/* DIGITAL TOOLKIT */}
+              <div>
+                <p className="text-sm text-zinc-500">Digital toolkit</p>
 
                 <p className="mt-1 leading-7 text-zinc-100">
-                  Java · Spring Boot · Next.js · TypeScript · PostgreSQL
+                  Java · Spring Boot · Next.js · TypeScript · PostgreSQL · Linux
                 </p>
               </div>
 
+              {/* LOCATION */}
               <div>
                 <p className="text-sm text-zinc-500">Location</p>
 
@@ -171,25 +191,27 @@ export default function HeroSection({ customer }: HeroSectionProps) {
                 </p>
               </div>
 
+              {/* FOCUS */}
               <div>
                 <p className="text-sm text-zinc-500">Focus</p>
 
                 <p className="mt-1 leading-7 text-zinc-300">
-                  Building reliable web applications, backend services, and
-                  practical systems that solve real problems.
+                  Improving processes, reducing inefficiencies, and using
+                  digital tools to build practical solutions for real
+                  operational problems.
                 </p>
               </div>
             </div>
 
-            {/* DECORATIVE TERMINAL LINE */}
+            {/* TERMINAL LINE */}
             <div className="mt-8 rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3 font-mono text-xs text-zinc-500">
-              <span className="text-green-400">$</span>{" "}
-              build --solve-real-problems
+              <span className="text-green-400">$</span> analyze --improve
+              --automate
               <span className="ml-1 animate-pulse text-green-400">_</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
