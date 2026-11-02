@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+
 import CtaSection from "@/components/CtaSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import HeroSection from "@/components/HeroSection";
 import ProfileSummarySection from "@/components/ProfileSummarySection";
+import ProjectsSection from "@/components/ProjectsSection";
 import QualificationsSection from "@/components/QualificationsSection";
 import ServicesSection from "@/components/ServicesSection";
 import SocialLinksSection from "@/components/SocialLinksSection";
@@ -11,29 +13,34 @@ import { getCustomer } from "@/lib/api";
 export async function generateMetadata(): Promise<Metadata> {
   const customer = await getCustomer();
 
-  const fullName = `${customer.firstName} ${customer.lastName}`;
   const description =
     customer.description.length > 160
       ? `${customer.description.slice(0, 157)}...`
       : customer.description;
 
   return {
-    title: `${fullName} | Portfolio`,
+    title: {
+      absolute: "Viktor Holovin | Industrial Engineering & Process Improvement",
+    },
+
     description,
+
     alternates: {
       canonical: "/",
     },
+
     openGraph: {
-      title: `${fullName} | Portfolio`,
+      title: "Viktor Holovin | Industrial Engineering & Process Improvement",
       description,
       url: "/",
-      siteName: "PortfolioNextJS",
+      siteName: "Viktor Holovin",
       type: "website",
       locale: "en_US",
     },
+
     twitter: {
       card: "summary_large_image",
-      title: `${fullName} | Portfolio`,
+      title: "Viktor Holovin | Industrial Engineering & Process Improvement",
       description,
     },
   };
@@ -43,12 +50,10 @@ export default async function Home() {
   const customer = await getCustomer();
 
   const latestJobs = [...customer.workingExperiences]
-    .sort((a, b) => {
-      const aDate = a.finishedWork ?? a.startedWork;
-      const bDate = b.finishedWork ?? b.startedWork;
-
-      return new Date(bDate).getTime() - new Date(aDate).getTime();
-    })
+    .sort(
+      (a, b) =>
+        new Date(b.startedWork).getTime() - new Date(a.startedWork).getTime(),
+    )
     .slice(0, 4);
 
   return (
@@ -62,6 +67,8 @@ export default async function Home() {
       <ExperienceSection jobs={latestJobs} />
 
       <QualificationsSection qualifications={customer.qualifications} />
+
+      <ProjectsSection />
 
       <ServicesSection innomartsUrl={customer.blog} />
 
