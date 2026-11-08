@@ -74,7 +74,7 @@ export default async function Home() {
 
       <CtaSection email={customer.email} blog={customer.blog} />
 
-      <SocialLinksSection socials={customer.socials} />
+      <SocialLinksSection email={customer.email} socials={customer.socials} />
     </main>
   );
 }
