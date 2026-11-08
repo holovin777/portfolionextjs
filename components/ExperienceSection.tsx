@@ -147,24 +147,6 @@ export default function ExperienceSection({ jobs }: ExperienceSectionProps) {
           <span aria-hidden="true">→</span>
         </Link>
       </div>
-
-      {/* CAREER DIRECTION */}
-      <div className="mt-10 rounded-3xl border border-green-500/20 bg-green-500/[0.04] p-6 sm:p-7">
-        <p className="text-xs uppercase tracking-[0.2em] text-green-400">
-          Career Direction
-        </p>
-
-        <h3 className="mt-3 text-xl font-semibold text-zinc-100">
-          From hands-on operations to process improvement
-        </h3>
-
-        <p className="mt-3 max-w-3xl leading-7 text-zinc-400">
-          My goal is to move toward Continuous Improvement and Industrial
-          Engineering roles where practical production experience can be
-          combined with data, digital tools, automation, and structured
-          problem-solving.
-        </p>
-      </div>
     </section>
   );
 }
