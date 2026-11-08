@@ -1,4 +1,9 @@
+import type { Locale } from "@/lib/i18n";
 import { projects } from "@/lib/projects";
+
+type ProjectsSectionProps = {
+  locale: Locale;
+};
 
 function getStatusStyles(status?: string) {
   switch (status?.toLowerCase()) {
@@ -12,7 +17,45 @@ function getStatusStyles(status?: string) {
   }
 }
 
-export default function ProjectsSection() {
+function getStatusLabel(status: string, locale: Locale) {
+  if (locale === "en") return status;
+
+  switch (status.toLowerCase()) {
+    case "production":
+      return "Produzione";
+
+    case "active":
+      return "Attivo";
+
+    case "live":
+      return "Online";
+
+    case "experimental":
+      return "Sperimentale";
+
+    default:
+      return status;
+  }
+}
+
+export default function ProjectsSection({ locale }: ProjectsSectionProps) {
+  const labels =
+    locale === "it"
+      ? {
+          eyebrow: "Progetti Selezionati",
+          title: "Progetti",
+          description:
+            "Progetti pratici in cui utilizzo software, dati e strumenti digitali per creare soluzioni, organizzare informazioni, automatizzare attività e risolvere problemi reali.",
+          viewProject: "Vedi progetto",
+        }
+      : {
+          eyebrow: "Selected Work",
+          title: "Projects",
+          description:
+            "Practical projects where I use software, data, and digital tools to build solutions, organize information, automate work, and solve real problems.",
+          viewProject: "View project",
+        };
+
   return (
     <section
       id="projects"
@@ -21,17 +64,15 @@ export default function ProjectsSection() {
       {/* HEADER */}
       <div className="mb-10">
         <p className="text-sm uppercase tracking-[0.22em] text-green-400">
-          Selected Work
+          {labels.eyebrow}
         </p>
 
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-          Projects
+          {labels.title}
         </h2>
 
         <p className="mt-4 max-w-2xl leading-7 text-zinc-400">
-          Practical projects where I use software, data, and digital tools to
-          build solutions, organize information, automate work, and solve real
-          problems.
+          {labels.description}
         </p>
       </div>
 
@@ -60,14 +101,14 @@ export default function ProjectsSection() {
                     project.status,
                   )}`}
                 >
-                  {project.status}
+                  {getStatusLabel(project.status, locale)}
                 </span>
               ) : null}
             </div>
 
             {/* DESCRIPTION */}
             <p className="mt-5 flex-1 leading-7 text-zinc-400">
-              {project.description}
+              {locale === "it" ? project.descriptionIt : project.description}
             </p>
 
             {/* TECH */}
@@ -90,7 +131,8 @@ export default function ProjectsSection() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-200 transition group-hover:text-green-400"
               >
-                View project
+                {labels.viewProject}
+
                 <span
                   aria-hidden="true"
                   className="transition-transform duration-200 group-hover:translate-x-1"

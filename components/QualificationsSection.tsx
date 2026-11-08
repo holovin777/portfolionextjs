@@ -1,22 +1,46 @@
 import Link from "next/link";
+
+import type { Locale } from "@/lib/i18n";
 import { Qualification } from "@/types/customer";
 
 type QualificationsSectionProps = {
   qualifications: Qualification[];
+  locale: Locale;
 };
 
-function formatDate(date: string | null) {
+function formatDate(date: string | null, locale: Locale) {
   if (!date) return null;
 
   const [year, month] = date.split("-").map(Number);
 
-  return new Intl.DateTimeFormat("en-GB", {
+  return new Intl.DateTimeFormat(locale === "it" ? "it-IT" : "en-GB", {
     year: "numeric",
     month: "short",
   }).format(new Date(year, month - 1));
 }
 
-function formatDegree(degree: string | null) {
+function formatDegree(degree: string | null, locale: Locale) {
+  if (locale === "it") {
+    switch (degree) {
+      case "MASTER":
+        return "Laurea Magistrale";
+
+      case "BACHELOR":
+        return "Laurea";
+
+      case "JUNIOR_SPECIALIST":
+        return "Diploma di Specialista Junior";
+
+      default:
+        return degree
+          ? degree
+              .toLowerCase()
+              .replaceAll("_", " ")
+              .replace(/\b\w/g, (letter) => letter.toUpperCase())
+          : "Qualifica";
+    }
+  }
+
   switch (degree) {
     case "MASTER":
       return "Master's Degree";
@@ -39,6 +63,7 @@ function formatDegree(degree: string | null) {
 
 export default function QualificationsSection({
   qualifications,
+  locale,
 }: QualificationsSectionProps) {
   const formalEducation = qualifications
     .filter(
@@ -65,6 +90,25 @@ export default function QualificationsSection({
     })
     .slice(0, 3);
 
+  const labels =
+    locale === "it"
+      ? {
+          eyebrow: "Formazione",
+          title: "Qualifiche Ingegneristiche",
+          description:
+            "Una formazione ingegneristica che supporta il mio percorso nei sistemi industriali, nel problem solving tecnico, nel miglioramento dei processi e nella digitalizzazione.",
+          highest: "Titolo più alto",
+          viewFull: "Vedi tutta la formazione",
+        }
+      : {
+          eyebrow: "Education",
+          title: "Engineering Qualifications",
+          description:
+            "Formal engineering education that supports my background in industrial systems, technical problem-solving, process improvement, and digitalization.",
+          highest: "Highest Degree",
+          viewFull: "View Full Education",
+        };
+
   return (
     <section
       id="qualifications"
@@ -72,26 +116,42 @@ export default function QualificationsSection({
     >
       <div className="mb-10">
         <p className="text-sm uppercase tracking-[0.22em] text-green-400">
-          Education
+          {labels.eyebrow}
         </p>
 
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-          Engineering Qualifications
+          {labels.title}
         </h2>
 
         <p className="mt-4 max-w-3xl leading-7 text-zinc-400">
-          Formal engineering education that supports my background in industrial
-          systems, technical problem-solving, process improvement, and
-          digitalization.
+          {labels.description}
         </p>
       </div>
 
       <div className="space-y-6">
         {formalEducation.map((qualification, index) => {
-          const degree = formatDegree(qualification.academicDegree);
+          const degree = formatDegree(qualification.academicDegree, locale);
 
-          const start = formatDate(qualification.startedStudying);
-          const end = formatDate(qualification.finishedStudying);
+          const start = formatDate(qualification.startedStudying, locale);
+
+          const end = formatDate(qualification.finishedStudying, locale);
+
+          const speciality =
+            locale === "it"
+              ? qualification.specialityIt || qualification.speciality
+              : qualification.speciality;
+
+          const institutionName =
+            locale === "it"
+              ? qualification.educationalInstitution.nameIt ||
+                qualification.educationalInstitution.name
+              : qualification.educationalInstitution.name;
+
+          const institutionLocation =
+            locale === "it"
+              ? qualification.educationalInstitution.locationIt ||
+                qualification.educationalInstitution.location
+              : qualification.educationalInstitution.location;
 
           const isPrimaryDegree = index === 0;
 
@@ -122,13 +182,13 @@ export default function QualificationsSection({
 
                       {isPrimaryDegree ? (
                         <span className="rounded-full border border-green-500/20 bg-green-500/10 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-green-400">
-                          Highest Degree
+                          {labels.highest}
                         </span>
                       ) : null}
                     </div>
 
                     <h3 className="mt-3 text-xl font-semibold text-zinc-100 sm:text-2xl">
-                      {qualification.speciality || degree}
+                      {speciality || degree}
                     </h3>
 
                     <div className="mt-3">
@@ -139,17 +199,17 @@ export default function QualificationsSection({
                           rel="noreferrer"
                           className="font-medium text-green-400 transition hover:text-green-300"
                         >
-                          {qualification.educationalInstitution.name}
+                          {institutionName}
                         </a>
                       ) : (
                         <p className="font-medium text-zinc-300">
-                          {qualification.educationalInstitution.name}
+                          {institutionName}
                         </p>
                       )}
 
-                      {qualification.educationalInstitution.location ? (
+                      {institutionLocation ? (
                         <p className="mt-1 text-sm text-zinc-500">
-                          {qualification.educationalInstitution.location}
+                          {institutionLocation}
                         </p>
                       ) : null}
                     </div>
@@ -171,10 +231,10 @@ export default function QualificationsSection({
 
       <div className="mt-8">
         <Link
-          href="/education"
+          href={locale === "it" ? "/it/education" : "/education"}
           className="inline-flex items-center gap-2 rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-100 transition duration-200 hover:border-green-500/40 hover:bg-zinc-900 hover:text-green-400"
         >
-          View Full Education
+          {labels.viewFull}
           <span aria-hidden="true">→</span>
         </Link>
       </div>

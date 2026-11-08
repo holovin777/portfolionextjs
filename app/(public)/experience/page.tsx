@@ -8,6 +8,14 @@ export const metadata: Metadata = {
 
   description:
     "Professional experience of Viktor Holovin across industrial engineering, maintenance, manufacturing, production, software, and process improvement.",
+
+  alternates: {
+    canonical: "/experience",
+    languages: {
+      en: "/experience",
+      it: "/it/experience",
+    },
+  },
 };
 
 function formatDate(date: string | null) {
