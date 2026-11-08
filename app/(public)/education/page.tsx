@@ -8,7 +8,14 @@ export const metadata: Metadata = {
   title: "Education",
   description:
     "Engineering education and technical qualifications of Viktor Holovin, including industrial engineering, mining engineering, research engineering, and software development studies.",
-}
+  alternates: {
+    canonical: "/education",
+    languages: {
+      en: "/education",
+      it: "/it/education",
+    },
+  },
+};
 
 function formatDate(date: string | null) {
   if (!date) return null;

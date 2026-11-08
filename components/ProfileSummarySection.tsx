@@ -1,32 +1,59 @@
-import { Customer } from "@/types/customer";
+import { Customer } from "@/types/customer"
+import type { Locale } from "@/lib/i18n"
 
 type ProfileSummarySectionProps = {
-  customer: Customer;
-};
+  customer: Customer
+  locale: Locale
+}
 
 export default function ProfileSummarySection({
   customer,
+  locale,
 }: ProfileSummarySectionProps) {
-  const items = [
-    {
-      label: "Career Focus",
-      value: customer.desiredProfession || "Continuous Improvement Engineer",
-      description:
-        "Process improvement, operational efficiency, and practical digitalization.",
-    },
-    {
-      label: "Engineering Background",
-      value: "Industrial Engineering",
-      description:
-        "Hands-on experience across maintenance, electromechanics, manufacturing, and production.",
-    },
-    {
-      label: "Digital Toolkit",
-      value: "Software · Data · Automation",
-      description:
-        "Java, Spring Boot, PostgreSQL, Next.js, TypeScript, Linux, and practical digital tools.",
-    },
-  ];
+  const items =
+    locale === "it"
+      ? [
+          {
+            label: "Obiettivo Professionale",
+            value: "Ingegnere del Miglioramento Continuo",
+            description:
+              "Miglioramento dei processi, efficienza operativa e digitalizzazione pratica.",
+          },
+          {
+            label: "Background Ingegneristico",
+            value: "Ingegneria Industriale",
+            description:
+              "Esperienza pratica nella manutenzione, elettromeccanica, produzione e lavorazione industriale.",
+          },
+          {
+            label: "Competenze Digitali",
+            value: "Software · Dati · Automazione",
+            description:
+              "Java, Spring Boot, PostgreSQL, Next.js, TypeScript, Linux e strumenti digitali applicati a problemi reali.",
+          },
+        ]
+      : [
+          {
+            label: "Career Focus",
+            value:
+              customer.desiredProfession ||
+              "Continuous Improvement Engineer",
+            description:
+              "Process improvement, operational efficiency, and practical digitalization.",
+          },
+          {
+            label: "Engineering Background",
+            value: "Industrial Engineering",
+            description:
+              "Hands-on experience across maintenance, electromechanics, manufacturing, and production.",
+          },
+          {
+            label: "Digital Toolkit",
+            value: "Software · Data · Automation",
+            description:
+              "Java, Spring Boot, PostgreSQL, Next.js, TypeScript, Linux, and practical digital tools.",
+          },
+        ]
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-8 sm:py-10">
@@ -53,11 +80,13 @@ export default function ProfileSummarySection({
                 {item.value}
               </h2>
 
-              <p className="mt-3 leading-7 text-zinc-400">{item.description}</p>
+              <p className="mt-3 leading-7 text-zinc-400">
+                {item.description}
+              </p>
             </div>
           </article>
         ))}
       </div>
     </section>
-  );
+  )
 }

@@ -1,8 +1,10 @@
+import type { Locale } from "@/lib/i18n";
 import { Social } from "@/types/customer";
 
 type SocialLinksSectionProps = {
   email: string;
   socials: Social[];
+  locale: Locale;
 };
 
 const priority: Record<string, number> = {
@@ -17,6 +19,7 @@ const priority: Record<string, number> = {
 export default function SocialLinksSection({
   email,
   socials,
+  locale,
 }: SocialLinksSectionProps) {
   const sortedSocials = [...socials].sort((a, b) => {
     const aPriority = priority[a.title.toLowerCase()] ?? 99;
@@ -25,6 +28,23 @@ export default function SocialLinksSection({
     return aPriority - bPriority;
   });
 
+  const labels =
+    locale === "it"
+      ? {
+          eyebrow: "Contatti",
+          title: "Restiamo in contatto",
+          description:
+            "Puoi contattarmi per opportunità professionali nell'ingegneria, nel miglioramento dei processi, nella digitalizzazione o nello sviluppo software.",
+          email: "Email",
+        }
+      : {
+          eyebrow: "Contact",
+          title: "Let's Connect",
+          description:
+            "Feel free to contact me about engineering, process improvement, digitalization, software development, or professional opportunities.",
+          email: "Email",
+        };
+
   return (
     <section
       id="socials"
@@ -32,16 +52,15 @@ export default function SocialLinksSection({
     >
       <div className="rounded-[2rem] border border-zinc-800 bg-zinc-900/50 p-7 sm:p-8">
         <p className="text-sm uppercase tracking-[0.22em] text-green-400">
-          Contact
+          {labels.eyebrow}
         </p>
 
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100">
-          Let&apos;s Connect
+          {labels.title}
         </h2>
 
         <p className="mt-4 max-w-2xl leading-7 text-zinc-400">
-          Feel free to contact me about engineering, process improvement,
-          digitalization, software development, or professional opportunities.
+          {labels.description}
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -49,7 +68,7 @@ export default function SocialLinksSection({
             href={`mailto:${email}`}
             className="rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-green-400"
           >
-            Email
+            {labels.email}
           </a>
 
           {sortedSocials.map((social) => (

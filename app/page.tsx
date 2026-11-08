@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-
-import CtaSection from "@/components/CtaSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import HeroSection from "@/components/HeroSection";
-import ProfileSummarySection from "@/components/ProfileSummarySection";
-import ProjectsSection from "@/components/ProjectsSection";
-import QualificationsSection from "@/components/QualificationsSection";
-import ServicesSection from "@/components/ServicesSection";
-import SocialLinksSection from "@/components/SocialLinksSection";
+import HomePage from "@/components/HomePage";
 import { getCustomer } from "@/lib/api";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,6 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
     alternates: {
       canonical: "/",
+      languages: {
+        en: "/",
+        it: "/it",
+      },
     },
 
     openGraph: {
@@ -46,28 +42,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
-  const customer = await getCustomer();
-
-  return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
-      <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
-        <HeroSection customer={customer} />
-      </div>
-
-      <ProfileSummarySection customer={customer} />
-
-      <ExperienceSection jobs={customer.workingExperiences} />
-
-      <QualificationsSection qualifications={customer.qualifications} />
-
-      <ProjectsSection />
-
-      <ServicesSection innomartsUrl={customer.blog} />
-
-      <CtaSection email={customer.email} />
-
-      <SocialLinksSection email={customer.email} socials={customer.socials} />
-    </main>
-  );
+export default function Home() {
+  return <HomePage locale="en" />;
 }
