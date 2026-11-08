@@ -49,13 +49,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const customer = await getCustomer();
 
-  const latestJobs = [...customer.workingExperiences]
-    .sort(
-      (a, b) =>
-        new Date(b.startedWork).getTime() - new Date(a.startedWork).getTime(),
-    )
-    .slice(0, 4);
-
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
@@ -64,7 +57,7 @@ export default async function Home() {
 
       <ProfileSummarySection customer={customer} />
 
-      <ExperienceSection jobs={latestJobs} />
+      <ExperienceSection jobs={customer.workingExperiences} />
 
       <QualificationsSection qualifications={customer.qualifications} />
 
