@@ -1,20 +1,25 @@
-import { Customer } from "@/types/customer"
+import { Customer } from "@/types/customer";
 
 export async function getCustomer(): Promise<Customer> {
-  const apiBaseUrl = process.env.SPRING_API_URL
-  const customerId = process.env.CUSTOMER_ID
+  const apiBaseUrl = process.env.SPRING_API_URL;
+  const customerSlug = process.env.CUSTOMER_SLUG;
 
-  if (!apiBaseUrl || !customerId) {
-    throw new Error("Missing SPRING_API_URL or CUSTOMER_ID in environment variables")
+  if (!apiBaseUrl || !customerSlug) {
+    throw new Error(
+      "Missing SPRING_API_URL or CUSTOMER_SLUG in environment variables",
+    );
   }
 
-  const res = await fetch(`${apiBaseUrl}/api/v1/customer/${customerId}`, {
-    cache: "no-store",
-  })
+  const res = await fetch(
+    `${apiBaseUrl}/api/v1/customer/public/${customerSlug}`,
+    {
+      cache: "no-store",
+    },
+  );
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch customer data: ${res.status}`)
+    throw new Error(`Failed to fetch customer data: ${res.status}`);
   }
 
-  return res.json()
+  return res.json();
 }
