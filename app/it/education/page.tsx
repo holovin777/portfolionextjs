@@ -95,7 +95,7 @@ export default async function ItalianEducationPage() {
     .sort(sortByFinishedDate);
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+    <main lang="it" className="min-h-screen bg-zinc-950 text-zinc-100">
       {/* INTRO */}
       <section className="mx-auto max-w-6xl px-6 pb-10 pt-16 sm:pt-24">
         <Link

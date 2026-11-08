@@ -17,7 +17,7 @@ export default async function HomePage({ locale }: HomePageProps) {
   const customer = await getCustomer();
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+    <main lang={locale} className="min-h-screen bg-zinc-950 text-zinc-100">
       <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
         <HeroSection customer={customer} locale={locale} />
       </div>
