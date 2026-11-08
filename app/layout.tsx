@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import HtmlLang from "@/components/HtmlLang";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
@@ -86,6 +87,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-zinc-950 text-zinc-100 antialiased`}
       >
+        <HtmlLang />
         <Navbar />
         {children}
         <Footer />
