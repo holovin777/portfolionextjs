@@ -1,78 +1,116 @@
-# PortfolioNextJS
+# holovin.com
 
-Frontend application for my personal portfolio, built with Next.js and Tailwind CSS.
+Personal professional website of Viktor Holovin.
 
-This project is designed to work as a frontend layer for my backend system **PortfolioSpring**, a Java Spring Boot application that provides structured data via REST API.
+The site presents my background in industrial engineering, process improvement, digitalization, and software development.
+
+It is built with Next.js and connects to a Java Spring Boot backend that provides structured portfolio data through a REST API.
+
+The website is available in:
+
+- English
+- Italian
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
-- Next.js (App Router)
-- React + TypeScript
+### Frontend
+
+- Next.js
+- React
+- TypeScript
 - Tailwind CSS
-- REST API (Spring Boot backend)
+
+### Backend
+
+- Java
+- Spring Boot
+- Spring Security
+- PostgreSQL
+- REST API
 
 ---
 
-## 🧠 About the Project
+## Architecture
 
-**PortfolioNextJS** is a modern frontend application that consumes data from my custom backend:
+The frontend and backend are separate applications.
 
-👉 PortfolioSpring (Java + Spring Boot)
+Frontend:
 
-The goal of this project is:
-- to separate frontend and backend architecture
-- to practice real-world fullstack development
-- to build a fast, SEO-friendly and scalable personal website
+```text
+holovin.com
+```
 
-All personal data (experience, education, socials, etc.) is provided dynamically through the API.
+Backend API:
+
+```text
+api.holovin.com
+```
+
+The frontend retrieves structured data such as:
+
+- professional experience
+- education
+- qualifications
+- social profiles
+- professional description
+- current role
+
+from the Spring Boot API.
 
 ---
 
-## 🔌 API Integration
+## Languages
 
-The frontend connects to the backend via REST API.
+The website currently supports:
 
-Example endpoint:
+```text
+/                 English
+/experience       English
+/education        English
 
+/it               Italian
+/it/experience    Italian
+/it/education     Italian
 ```
-https://api.holovin.com/api/v1/customer/{customerId}
+
+The Italian version uses localized API fields where available, with English fallback values.
+
+---
+
+## API Integration
+
+The public website retrieves the portfolio using the customer slug.
+
+Example:
+
+```text
+GET /api/v1/customer/public/viktor-holovin
 ```
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
-Create a file called:
+Create:
 
-```
+```text
 .env.local
 ```
 
-and add:
+Example:
 
 ```env
-SPRING_API_URL=https://localhost:8001
-CUSTOMER_ID=your_customer_id_here
+SPRING_API_URL=https://api.holovin.com
+CUSTOMER_SLUG=viktor-holovin
 ```
 
-⚠️ Important:
-- `.env.local` is **not committed to GitHub**
-- Use `.env.example` as a reference
+`.env.local` should not be committed to Git.
 
 ---
 
-## 📄 .env.example
-
-```env
-SPRING_API_URL=
-CUSTOMER_ID=
-```
-
----
-
-## ▶️ Getting Started
+## Development
 
 Install dependencies:
 
@@ -80,60 +118,72 @@ Install dependencies:
 npm install
 ```
 
-Run development server:
+Run the development server:
 
 ```bash
 npm run dev
 ```
 
-Open in browser:
+Open:
 
-```
+```text
 http://localhost:3000
 ```
 
----
+Production build:
 
-## 🛠️ Development Notes
-
-- Uses **Next.js App Router** (no `getServerSideProps`)
-- Data is fetched using native `fetch()` inside server components
-- Tailwind CSS is configured via modern Next.js setup
-- Designed for deployment on Vercel or any Node-compatible environment
+```bash
+npm run build
+```
 
 ---
 
-## 📦 Deployment
+## SEO
 
-Recommended:
+The project includes:
 
-- Vercel (best integration with Next.js)
+- localized metadata
+- canonical URLs
+- hreflang alternatives
+- sitemap.xml
+- robots.txt
+- Person JSON-LD structured data
+- Open Graph metadata
 
 ---
 
+## Professional Focus
 
-## 📜 License
+The primary professional direction of the website is:
+
+```text
+Industrial Engineering
+Process Improvement
+Digitalization
+```
+
+Software development remains an important part of the profile and technical toolkit, including:
+
+```text
+Java
+Spring Boot
+PostgreSQL
+REST APIs
+Next.js
+TypeScript
+Linux
+```
+
+---
+
+## Deployment
+
+The frontend can be deployed to Vercel or another Node.js-compatible environment.
+
+The backend is maintained separately as a Spring Boot application.
+
+---
+
+## License
 
 This project is licensed under the MIT License.
-
-You are free to use, modify, and distribute this software.
-
----
-
-## 👤 Author
-
-Viktor Holovin
-
-- Website: https://holovin.com
-- Blog: https://innomarts.com
-- GitHub: https://github.com/holovin777
-
----
-
-## ⚡ Philosophy
-
-> Build real things.  
-> Connect frontend and backend.  
-> Learn by doing, not by watching tutorials.
-
----
