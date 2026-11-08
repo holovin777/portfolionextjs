@@ -1,3 +1,4 @@
+import PersonJsonLd from "@/components/PersonJsonLd";
 import CtaSection from "@/components/CtaSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import HeroSection from "@/components/HeroSection";
@@ -17,31 +18,37 @@ export default async function HomePage({ locale }: HomePageProps) {
   const customer = await getCustomer();
 
   return (
-    <main lang={locale} className="min-h-screen bg-zinc-950 text-zinc-100">
-      <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
-        <HeroSection customer={customer} locale={locale} />
-      </div>
+    <>
+      <PersonJsonLd customer={customer} locale={locale} />
 
-      <ProfileSummarySection customer={customer} locale={locale} />
+      <main lang={locale} className="min-h-screen bg-zinc-950 text-zinc-100">
+        <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-24">
+          <HeroSection customer={customer} locale={locale} />
+        </div>
 
-      <ExperienceSection jobs={customer.workingExperiences} locale={locale} />
+        <ProfileSummarySection customer={customer} locale={locale} />
 
-      <QualificationsSection
-        qualifications={customer.qualifications}
-        locale={locale}
-      />
+        <ExperienceSection jobs={customer.workingExperiences} locale={locale} />
 
-      <ProjectsSection locale={locale} />
+        <QualificationsSection
+          qualifications={customer.qualifications}
+          locale={locale}
+        />
 
-      <ServicesSection innomartsUrl={customer.blog} locale={locale} />
+        <ProjectsSection locale={locale} />
 
-      <CtaSection email={customer.email} locale={locale} />
+        <ServicesSection innomartsUrl={customer.blog} locale={locale} />
 
-      <SocialLinksSection
-        email={customer.email}
-        socials={customer.socials}
-        locale={locale}
-      />
-    </main>
+        <CtaSection email={customer.email} locale={locale} />
+
+        <SocialLinksSection
+          email={customer.email}
+          socials={customer.socials}
+          locale={locale}
+        />
+      </main>
+
+    </>
+
   );
 }
