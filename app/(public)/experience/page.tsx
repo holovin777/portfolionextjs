@@ -4,7 +4,8 @@ import Link from "next/link";
 import { getCustomer } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "Professional Experience | Viktor Holovin",
+  title: "Professional Experience",
+
   description:
     "Professional experience of Viktor Holovin across industrial engineering, maintenance, manufacturing, production, software, and process improvement.",
 };
