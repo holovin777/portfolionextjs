@@ -327,7 +327,6 @@ export default async function ItalianEducationPage() {
               const completed = formatDate(qualification.finishedStudying);
 
               const courseName =
-                qualification.course?.nameIt ||
                 qualification.course?.name ||
                 qualification.specialityIt ||
                 qualification.speciality ||
