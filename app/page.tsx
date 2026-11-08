@@ -65,7 +65,7 @@ export default async function Home() {
 
       <ServicesSection innomartsUrl={customer.blog} />
 
-      <CtaSection email={customer.email} blog={customer.blog} />
+      <CtaSection email={customer.email} />
 
       <SocialLinksSection email={customer.email} socials={customer.socials} />
     </main>
