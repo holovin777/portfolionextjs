@@ -36,7 +36,7 @@ export default async function ItalianExperiencePage() {
   );
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+    <main lang="it" className="min-h-screen bg-zinc-950 text-zinc-100">
       <section className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:pt-24">
         <Link
           href="/it"
