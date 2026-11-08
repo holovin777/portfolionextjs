@@ -1,14 +1,14 @@
-import { projects } from "@/lib/projects"
+import { projects } from "@/lib/projects";
 
 function getStatusStyles(status?: string) {
   switch (status?.toLowerCase()) {
     case "active":
     case "production":
     case "live":
-      return "border-green-500/20 bg-green-500/10 text-green-400"
+      return "border-green-500/20 bg-green-500/10 text-green-400";
 
     default:
-      return "border-zinc-700 bg-zinc-900 text-zinc-400"
+      return "border-zinc-700 bg-zinc-900 text-zinc-400";
   }
 }
 
@@ -29,8 +29,9 @@ export default function ProjectsSection() {
         </h2>
 
         <p className="mt-4 max-w-2xl leading-7 text-zinc-400">
-          Real projects where I work across frontend, backend, APIs,
-          infrastructure, and practical problem-solving.
+          Practical projects where I use software, data, and digital tools to
+          build solutions, organize information, automate work, and solve real
+          problems.
         </p>
       </div>
 
@@ -102,5 +103,5 @@ export default function ProjectsSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }
