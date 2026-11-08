@@ -44,7 +44,8 @@ export default function HeroSection({ customer }: HeroSectionProps) {
           </h1>
 
           <h2 className="mt-5 max-w-3xl text-xl font-semibold leading-8 text-zinc-300 sm:text-2xl">
-            Industrial Engineer focused on Process Improvement & Digitalization.
+            Industrial Engineer focused on Process Improvement & Digitalization,
+            with hands-on software development experience.
           </h2>
 
           <p className="mt-6 max-w-3xl leading-8 text-zinc-400">
