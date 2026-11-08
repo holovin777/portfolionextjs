@@ -5,10 +5,10 @@ import { getCustomer } from "@/lib/api";
 import { Qualification } from "@/types/customer";
 
 export const metadata: Metadata = {
-  title: "Education | Viktor Holovin",
+  title: "Education",
   description:
     "Engineering education and technical qualifications of Viktor Holovin, including industrial engineering, mining engineering, research engineering, and software development studies.",
-};
+}
 
 function formatDate(date: string | null) {
   if (!date) return null;
